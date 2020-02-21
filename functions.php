@@ -28,8 +28,9 @@ class AddomasTheme{
 		add_action( 'widgets_init', array( $this, 'register_widgets'));
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ));
 
+
 		// Includes Required files
-		self::includes();
+		$this->includes();
 	}
 
 	/**
@@ -91,6 +92,12 @@ class AddomasTheme{
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
+
+		// Add support for editor styles.
+		add_theme_support( 'editor-styles' );
+
+		// Enqueue editor styles.
+		add_editor_style( 'style-editor.css' );
 
 		/**
 		 * Add support for core custom logo.
@@ -157,6 +164,11 @@ class AddomasTheme{
 	 * Including Template Files
 	 */
 	public function includes(){
+		/**
+		 * Implement the Custom Header feature.
+		 */
+		require get_template_directory() . '/inc/helper-class.php';
+
 		/**
 		 * Implement the Custom Header feature.
 		 */
