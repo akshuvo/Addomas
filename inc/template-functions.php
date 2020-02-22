@@ -22,6 +22,15 @@ function addomas_body_classes( $classes ) {
 		$classes[] = 'no-sidebar';
 	}
 
+	// Adds a class if logo added
+	$custom_logo_id = get_theme_mod( 'custom_logo' );
+	if ( $custom_logo_id ) {
+		$classes[] = 'am-custom-logo';
+	}
+
+	// Adds a class for the theme	
+	$classes[] = 'am-body';	
+
 	return $classes;
 }
 add_filter( 'body_class', 'addomas_body_classes' );

@@ -115,6 +115,10 @@ a {
 	background-color: transparent;
 }
 
+a, a:focus, a:hover, a:visited {
+    text-decoration: none;
+}
+
 /**
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
@@ -614,15 +618,11 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-	color: royalblue;
+	color: #0274be;
 }
 
-a:visited {
-	color: purple;
-}
-
-a:hover, a:focus, a:active {
-	color: midnightblue;
+a:visited, a:hover, a:focus, a:active {
+	color: #222;;
 }
 
 a:focus {
@@ -633,14 +633,15 @@ a:hover, a:active {
 	outline: 0;
 }
 
+.site-title a, .site-title a:focus, .site-title a:hover, .site-title a:visited {
+    color: #222;
+}
+
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
 .main-navigation {
-	clear: both;
-	display: block;
-	float: left;
-	width: 100%;
+	margin-left: auto;
 }
 
 .main-navigation ul {

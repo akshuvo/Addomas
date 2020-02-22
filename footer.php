@@ -10,7 +10,7 @@
  */
 
 ?>
-
+		</div><!-- .am-container -->
 	</div><!-- #content -->
 	<footer id="colophon" class="site-footer">
 		<?php do_action('addomas_footer_hook'); ?>

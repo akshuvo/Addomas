@@ -1,0 +1,75 @@
+/*General*/
+.am-body{
+	background: #f7f7f7;
+}
+.am-container{
+	max-width: 1200px;
+	margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/*Header*/
+.site-header {
+    z-index: 99;
+    position: relative;
+    background-color: #fff;
+    padding: 15px 0;
+}
+
+.am-flex {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.site-branding {
+    align-self: center;
+    display: flex;
+    align-items: center;
+}
+
+.site-description, .site-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1;
+}
+.site-title {
+    font-size: 2rem;
+    font-weight: 400;
+}
+.site-description {
+    color: #444;
+}
+
+.site-branding img {
+    max-width: 220px;
+    height: auto;
+    width: auto;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.custom-logo-link+.site-title{
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+/*Footer*/
+.footer-bottom {
+    background: #3a3a3a;
+    padding: 20px 0;
+    display: block;
+}
+
+.footer-bottom, .footer-bottom a {
+    color: #fff;
+}

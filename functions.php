@@ -9,23 +9,16 @@
 
 
 class AddomasTheme{
-		/**
-		 * Prefix for theme
-		 *
-		 * @return string
-		 * @since 1.0.0
-		 *
-		 * @package Gutenbiz WordPress Theme
-		 */
-		
-		public static function get_version(){
-			return current_time('timestamp');
-		}
+	
+	// Version
+	public static function get_version(){
+		return current_time('timestamp');
+	}
 
 	public function __construct(){
 		add_action( 'after_setup_theme', array( $this, 'theme_setup' ));
-		add_action( 'after_setup_theme', array( $this, 'content_width' ));
-		add_action( 'widgets_init', array( $this, 'register_widgets'));
+		//add_action( 'after_setup_theme', array( $this, 'content_width' ));
+		add_action( 'widgets_init', array( $this, 'sidebar_registration'));
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ));
 
 
@@ -52,6 +45,12 @@ class AddomasTheme{
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
 
+		// Set content-width.
+		global $content_width;
+		if ( ! isset( $content_width ) ) {
+			$content_width = apply_filters( 'addomas_content_width', 640 );
+		}
+
 		/*
 		 * Let WordPress manage the document title.
 		 * By adding theme support, we declare that this theme does not use a
@@ -70,6 +69,7 @@ class AddomasTheme{
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'addomas' ),
+			'footer' => esc_html__( 'Footer Menu', 'addomas' ),
 		) );
 
 		/*
@@ -118,7 +118,6 @@ class AddomasTheme{
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'addomas-style', get_stylesheet_uri() );
 
-		wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/vendor/bootstrap/bootstrap.min.css' );
 		wp_enqueue_style( 'addomas-main', get_template_directory_uri() . '/assets/css/main.css', null, self::get_version() );
 
 
@@ -129,36 +128,48 @@ class AddomasTheme{
 		}
 	}
 
+
 	/**
-	 * Register widget area.
+	 * Register widget areas.
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
 	 */
-	function register_widgets() {
-		register_sidebar( array(
-			'name'          => esc_html__( 'Sidebar', 'addomas' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'addomas' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
+	public function sidebar_registration() {
+
+		// Arguments used in all register_sidebar() calls.
+		$shared_args = array(
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		) );
+			'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
+			'after_widget'  => '</div></div>',
+		);
+
+		// Footer #1.
+		register_sidebar(
+			array_merge(
+				$shared_args,
+				array(
+					'name'        => __( 'Footer #1', 'addomas' ),
+					'id'          => 'sidebar-1',
+					'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'addomas' ),
+				)
+			)
+		);
+
+		// Footer #2.
+		register_sidebar(
+			array_merge(
+				$shared_args,
+				array(
+					'name'        => __( 'Footer #2', 'addomas' ),
+					'id'          => 'sidebar-2',
+					'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'addomas' ),
+				)
+			)
+		);
+
 	}
 
-	/**
-	 * Set the content width in pixels, based on the theme's design and stylesheet.
-	 *
-	 * Priority 0 to make it available to lower priority callbacks.
-	 *
-	 * @global int $content_width
-	 */
-	function content_width() {
-		// This variable is intended to be overruled from themes.
-		// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
-		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-		$GLOBALS['content_width'] = apply_filters( 'addomas_content_width', 640 );
-	}
 
 	/**
 	 * Including Template Files
