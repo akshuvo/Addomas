@@ -652,12 +652,18 @@ a:hover, a:active {
 }
 
 .main-navigation ul ul {
-	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-	float: left;
+	width: 240px;
+	background: #fff;
 	position: absolute;
+	box-shadow: 0 4px 10px -2px rgba(0,0,0,.1);
+	float: left;
 	top: 100%;
 	left: -999em;
 	z-index: 99999;
+	border: 1px solid #eaeaea;
+}
+.main-navigation ul ul li{
+	float: none;
 }
 
 .main-navigation ul ul ul {
@@ -671,7 +677,10 @@ a:hover, a:active {
 }
 
 .main-navigation ul ul a {
-	width: 200px;
+	padding: .9em 1em;
+	display: block;
+	word-wrap: break-word;
+	border-bottom: 1px solid #eaeaea;
 }
 
 .main-navigation ul li:hover > ul,
@@ -687,6 +696,9 @@ a:hover, a:active {
 .main-navigation a {
 	display: block;
 	text-decoration: none;
+	padding: 1.125rem 1rem;
+	transition: all .2s linear;
+	color: #3a3a3a;
 }
 
 /* Small menu. */

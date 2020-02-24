@@ -19,14 +19,14 @@
 function addomas_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'addomas_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '000000',
+		'default-text-color'     => '222222',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'addomas_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'addomas_custom_header_setup' );
+add_action( 'after_setup_theme', 'addomas_custom_header_setup', 20 );
 
 if ( ! function_exists( 'addomas_header_style' ) ) :
 	/**
@@ -61,8 +61,7 @@ if ( ! function_exists( 'addomas_header_style' ) ) :
 		// If the user has set a custom color for the text use that.
 		else :
 			?>
-			.site-title a,
-			.site-description {
+			.site-title a {
 				color: #<?php echo esc_attr( $header_text_color ); ?>;
 			}
 		<?php endif; ?>

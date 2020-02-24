@@ -29,22 +29,24 @@
 		<div class="am-container">
 			<div class="am-flex">
 				<div class="site-branding">
-					<?php
-					the_custom_logo();
-					if ( is_front_page() && is_home() ) :
-						?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<?php the_custom_logo(); ?>
+					<div class="header-titles">
 						<?php
-					else :
-						?>
-						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-						<?php
-					endif;
-					$addomas_description = get_bloginfo( 'description', 'display' );
-					if ( $addomas_description || is_customize_preview() ) :
-						?>
-						<p class="site-description"><?php echo esc_html( $addomas_description ); ?></p>
-					<?php endif; ?>
+						if ( is_front_page() && is_home() ) :
+							?>
+							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+							<?php
+						else :
+							?>
+							<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+							<?php
+						endif;
+						$addomas_description = get_bloginfo( 'description', 'display' );
+						if ( $addomas_description || is_customize_preview() ) :
+							?>
+							<p class="site-description"><?php echo esc_html( $addomas_description ); ?></p>
+						<?php endif; ?>
+					</div><!-- .header-titles -->
 				</div><!-- .site-branding -->
 
 				<nav id="site-navigation" class="main-navigation">

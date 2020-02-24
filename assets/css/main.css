@@ -1,10 +1,10 @@
 /*General*/
 .am-body{
-	background: #f7f7f7;
+    background: #f7f7f7;
 }
 .am-container{
-	max-width: 1200px;
-	margin-left: auto;
+    max-width: 1200px;
+    margin-left: auto;
     margin-right: auto;
     padding-left: 20px;
     padding-right: 20px;
@@ -31,24 +31,6 @@
     align-items: center;
 }
 
-.site-branding {
-    align-self: center;
-    display: flex;
-    align-items: center;
-}
-
-.site-description, .site-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 1;
-}
-.site-title {
-    font-size: 2rem;
-    font-weight: 400;
-}
-.site-description {
-    color: #444;
-}
 
 .site-branding img {
     max-width: 220px;
@@ -57,11 +39,32 @@
     max-height: 80px;
     object-fit: contain;
 }
-
-.custom-logo-link+.site-title{
-    margin-left: 8px;
-    margin-right: 8px;
+.header-titles {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
+.site-description, .site-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1;
+    letter-spacing: -0.0415625em;
+}
+.site-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: 14px;
+}
+.site-title a {
+    display: inline-block;
+}
+.site-description {
+    color: #6d6d6d;
+    font-weight: 700;
+}
+
+
 
 /*Footer*/
 .footer-bottom {
