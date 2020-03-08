@@ -86,7 +86,7 @@ class AddomasTheme{
 
 		// Set up the WordPress core custom background feature.
 		add_theme_support( 'custom-background', apply_filters( 'addomas_custom_background_args', array(
-			'default-color' => 'ffffff',
+			'default-color' => 'f7f7f7',
 			'default-image' => '',
 		) ) );
 
