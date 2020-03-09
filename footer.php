@@ -11,12 +11,12 @@
 
 ?>
 		</div><!-- .am-container -->
+		<?php do_action( 'addomas_after_container' ); ?>
 	</div><!-- #content -->
+
 	<footer id="colophon" class="site-footer">
 		<?php do_action('addomas_footer_hook'); ?>
-	</footer><!-- #colophon -->
-	
-
+	</footer><!-- #colophon -->	
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

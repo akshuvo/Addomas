@@ -9,7 +9,7 @@
 
 get_header();
 ?>
-
+	<?php do_action( 'addomas_before_primary' ); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
@@ -17,7 +17,8 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/content', 'single' );
+			//get_template_part( 'template-parts/content', get_post_type() );
 
 			the_post_navigation();
 
@@ -31,6 +32,7 @@ get_header();
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
+	<?php do_action( 'addomas_after_primary' ); ?>
 
 <?php
 get_sidebar();

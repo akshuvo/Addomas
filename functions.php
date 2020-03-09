@@ -8,7 +8,7 @@
  */
 
 
-class AddomasTheme{
+final class AddomasTheme{
 	
 	// Version
 	public static function get_version(){
@@ -20,7 +20,6 @@ class AddomasTheme{
 		//add_action( 'after_setup_theme', array( $this, 'content_width' ));
 		add_action( 'widgets_init', array( $this, 'sidebar_registration'));
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ));
-
 
 		// Includes Required files
 		$this->includes();
@@ -120,7 +119,6 @@ class AddomasTheme{
 
 		wp_enqueue_style( 'addomas-main', get_template_directory_uri() . '/assets/css/main.css', null, self::get_version() );
 
-
 		wp_enqueue_script( 'addomas-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), self::get_version(), true );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -144,26 +142,14 @@ class AddomasTheme{
 			'after_widget'  => '</div></div>',
 		);
 
-		// Footer #1.
+		// Sidebar #1.
 		register_sidebar(
 			array_merge(
 				$shared_args,
 				array(
 					'name'        => __( 'Footer #1', 'addomas' ),
 					'id'          => 'sidebar-1',
-					'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'addomas' ),
-				)
-			)
-		);
-
-		// Footer #2.
-		register_sidebar(
-			array_merge(
-				$shared_args,
-				array(
-					'name'        => __( 'Footer #2', 'addomas' ),
-					'id'          => 'sidebar-2',
-					'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'addomas' ),
+					'description' => __( 'Widgets in this area will be displayed in footer.', 'addomas' ),
 				)
 			)
 		);

@@ -39,15 +39,45 @@ if ( ! function_exists( 'addomas_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 */
-	function addomas_posted_by() {
+	function addomas_posted_by( $post_id = null ) {
+		
+		$post_id = ( $post_id ) ? $post_id : get_the_ID();
+		$author_id = get_post_field( 'post_author', $post_id );
+
 		$byline = sprintf(
 			/* translators: %s: post author. */
 			esc_html_x( 'by %s', 'post author', 'addomas' ),
-			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( $author_id ) ) . '">' . esc_html( get_the_author_meta('display_name', $author_id) ) . '</a></span>'
 		);
 
 		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput
 
+	}
+endif;
+
+if ( ! function_exists( 'addomas_leave_comment' ) ) :
+	/**
+	 * Prints Comment count html
+	 */
+	function addomas_leave_comment() {
+		if ( is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+			echo '<span class="comments-link"> ';
+			comments_popup_link(
+				sprintf(
+					wp_kses(
+						/* translators: %s: post title */
+						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'addomas' ),
+						array(
+							'span' => array(
+								'class' => array(),
+							),
+						)
+					),
+					get_the_title()
+				)
+			);
+			echo '</span>';
+		}
 	}
 endif;
 

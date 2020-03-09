@@ -24,7 +24,7 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'addomas' ); ?></a>
-
+	<?php do_action( 'addomas_before_header' ); ?>
 	<header id="masthead" class="site-header">
 		<div class="am-container">
 			<div class="am-flex">
@@ -61,6 +61,8 @@
 			</div><!-- .am-flex -->
 		</div><!-- .am-container -->
 	</header><!-- #masthead -->
+	<?php do_action( 'addomas_after_header' ); ?>
 
 	<div id="content" class="site-content">
+		<?php do_action( 'addomas_before_container' ); ?>
 		<div class="am-container">

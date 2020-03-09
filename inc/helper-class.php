@@ -6,6 +6,8 @@ class AddomasTheme_Helper_Class{
 		add_action( 'addomas_footer_hook', array( $this, 'addomas_footer_menu' ), 10 );
 		add_action( 'addomas_footer_hook', array( $this, 'addomas_footer_bottom' ), 10 );
 		add_action( 'addomas_footer_copyright', array( $this, 'footer_copyright' ), 10 );
+
+		add_action( 'addomas_before_container', array( $this, 'addomas_post_header' ), 10 );
 	}
 
 	/**
@@ -27,6 +29,39 @@ class AddomasTheme_Helper_Class{
 			</nav><!-- .footer-navigation -->
 		<?php endif;
 			
+	}
+
+	/**
+	 * Hooked to post header
+	 */
+	public function addomas_post_header() {		
+		$thumb_url = "";
+		
+		if( has_post_thumbnail() ) {
+			$thumb_url = get_the_post_thumbnail_url();
+		}
+		$thumb_url = apply_filters( 'addomas_post_thumbnail_url', $thumb_url );
+
+		if( is_single() && is_singular() ) : ?>
+
+			<header class="entry-header am__header-image <?php if( $thumb_url ) { echo esc_attr( 'has_bg' ); } ?>" style="background-image: url( <?php echo esc_url( $thumb_url ); ?> );">
+				<?php
+				
+				the_title( '<h1 class="entry-title">', '</h1>' );
+				
+				if ( 'post' === get_post_type() ) :
+					?>
+					<div class="entry-meta">
+						<?php
+						addomas_posted_on();
+						addomas_posted_by( get_the_ID() );
+						addomas_leave_comment();
+						?>
+					</div><!-- .entry-meta -->
+				<?php endif; ?>
+			</header><!-- .entry-header -->
+
+		<?php endif;
 	}
 
 	/**

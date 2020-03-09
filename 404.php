@@ -9,7 +9,7 @@
 
 get_header();
 ?>
-
+	<?php do_action( 'addomas_before_primary' ); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
@@ -55,6 +55,7 @@ get_header();
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
+	<?php do_action( 'addomas_after_primary' ); ?>
 
 <?php
 get_footer();
