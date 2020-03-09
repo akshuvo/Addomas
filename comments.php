@@ -32,13 +32,13 @@ if ( post_password_required() ) {
 			if ( '1' === $addomas_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'addomas' ),
+					esc_html__( 'One reply on &ldquo;%1$s&rdquo;', 'addomas' ),
 					'<span>' . get_the_title() . '</span>' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				);
 			} else {
 				printf( // phpcs:ignore WordPress.Security.EscapeOutput.DeprecatedWhitelistCommentFound // WPCS: XSS OK.
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $addomas_comment_count, 'comments title', 'addomas' ) ),
+					esc_html( _nx( '%1$s reply on &ldquo;%2$s&rdquo;', '%1$s replies on &ldquo;%2$s&rdquo;', $addomas_comment_count, 'comments title', 'addomas' ) ),
 					number_format_i18n( $addomas_comment_count ),
 					'<span>' . get_the_title() . '</span>'
 				);
@@ -53,6 +53,7 @@ if ( post_password_required() ) {
 			wp_list_comments( array(
 				'style'      => 'ol',
 				'short_ping' => true,
+				'avatar_size' => 42,
 			) );
 			?>
 		</ol><!-- .comment-list -->
