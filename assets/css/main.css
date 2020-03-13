@@ -951,9 +951,11 @@ a:hover, a:active {
       box-shadow: 0 4px 10px -2px rgba(0,0,0,.1);
       border: 1px solid #eaeaea;
   }
-  .main-navigation li{
-    
-float: none;
+  .main-navigation li{    
+    float: none;
+  }
+  .main-navigation li a{  
+      border-bottom: 1px solid #eaeaea;
   }
 }
 
