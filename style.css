@@ -1,7 +1,8 @@
 /**
  * Theme Name: Addomas
- * Theme URI: https://github.com/akshuvo/Addomas
- * Author: Underscores.me
+ * Theme URI: https://github.com/akshuvo/addomas
+ * Github Theme URI: https://github.com/akshuvo/addomas
+ * Author: AddonMaster
  * Author URI: http://akhtarujjaman.com
  * Description: A Morden, Fast, Lightweight & Customizable WordPress Theme for Any Website
  * Version: 1.0.0
@@ -16,6 +17,8 @@
  * Addomas is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
  * Underscores is distributed under the terms of the GNU GPL v2 or later.
  * 
- * Normalizing styles have been helped along thanks to the fine work of
- * Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+ */
+
+/**
+ * All CSS are placed on assets/css/main.css
  */
