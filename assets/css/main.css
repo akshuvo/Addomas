@@ -903,6 +903,26 @@ a:hover, a:active {
     padding: 1.125rem 1rem;
     transition: all .2s linear;
     color: #3a3a3a;
+    position: relative;
+}
+
+.main-navigation li.page_item_has_children>a:after {
+    content: "\203A";
+    position: absolute;
+    right: 6px;
+    transform: rotate(90deg);
+    font-weight: 600;
+    transition: all .1s ease-in-out;
+}
+
+.main-navigation li.page_item_has_children:hover>a:after,
+.main-navigation li.page_item_has_children.focus>a:after {
+    transform: rotate(-90deg);
+}
+
+.main-navigation .children li.page_item_has_children:hover>a:after,
+.main-navigation .children li.page_item_has_children.focus>a:after {
+    transform: rotate(0);
 }
 
 /* Small menu. */
@@ -911,7 +931,7 @@ a:hover, a:active {
     display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 768px) {
     .menu-toggle {
         display: none;
     }
@@ -1194,17 +1214,6 @@ table table td {
   color: inherit;
 }
 
-.widget_search .search-form:after {
-  font-family: "Font-awesome";
-  font-size: 1.2em;
-  font-weight: normal;
-  content: "\e8b6";
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translate(0, -50%);
-}
-
 .widget_search .search-form > label {
   position: relative;
 }
@@ -1215,12 +1224,11 @@ table table td {
   padding: 13px 20px;
   border-radius: 2px;
   border: none;
-  top: 0px;
-  right: 0px;
+  top: 10%;
+  bottom: 10%;
+  right: 9px;
   position: absolute;
-  color: transparent;
-  background: transparent;
-  max-width: 45px;
+  height: 80%;
   z-index: 2;
 }
 
@@ -1505,7 +1513,7 @@ body.rtl #comments .children {
 }
 
 body.rtl #comments ol.comment-list .children:before {
-  content: "ÃƒÂ¢Ã¢â‚¬Â Ã‚Â©";
+  content: "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Ãƒâ€šÃ‚Â©";
   left: auto;
   right: 0;
 }
