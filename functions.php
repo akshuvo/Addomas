@@ -9,7 +9,7 @@
 
 
 final class AddomasTheme{
-	
+
 	// Version
 	public static function get_version(){
 		return current_time('timestamp');
@@ -118,6 +118,9 @@ final class AddomasTheme{
 		wp_enqueue_style( 'addomas-style', get_stylesheet_uri() );
 
 		wp_enqueue_style( 'addomas-main', get_template_directory_uri() . '/assets/css/main.css', null, self::get_version() );
+
+		wp_enqueue_script( 'turbolinks', get_template_directory_uri() . '/assets/turbolinks/01turbolinks.js', array(), self::get_version(), true );
+		wp_enqueue_script( 'turbolinks-init', get_template_directory_uri() . '/assets/turbolinks/_init.js', array(), self::get_version(), true );
 
 		wp_enqueue_script( 'addomas-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), self::get_version(), true );
 
